@@ -19,12 +19,12 @@ extern "C" float* SquareProc(float* vector1, float* punteroResultado);
 // Muestra los dos vectores que recibe por parametros
 void mostrarVectores(float vector1[], float vector2[]) {
 	cout << "\nPrimer vector: { ";
-	for (int i = 0; i < 4; i++) {
+	for (int i = 0; i < 8; i++) {
 		cout << vector1[i] << ", ";
 	}
 	cout << "}\n\n";
 	cout << "Segundo vector: { ";
-	for (int i = 0; i < 4; i++) {
+	for (int i = 0; i < 8; i++) {
 		cout << vector2[i] << ", ";
 	}
 	cout << "}\n\n";
@@ -74,7 +74,7 @@ void cambiarValores(float vector1[], float vector2[]) {
 	string numero = "";
 	int enteredCounter = 0;
 	cout << "\nIngrese los valores del primer vector, ingrese una letra para pasar al siguiente vector: \n";
-	while (enteredCounter < 4) {
+	while (enteredCounter < 8) {
 		cin >> numero;
 		if (esNumero(numero)) {
 			vector1[enteredCounter] = stof(numero);
@@ -86,7 +86,7 @@ void cambiarValores(float vector1[], float vector2[]) {
 	}
 	enteredCounter = 0;
 	cout << "\nIngrese los valores del segundo vector, ingrese una letra para pasar al siguiente vector: \n";
-	while (enteredCounter < 4) {
+	while (enteredCounter < 8) {
 		cin >> numero;
 		if (esNumero(numero)) {
 			vector2[enteredCounter] = stof(numero);
@@ -153,8 +153,8 @@ float* elegirVector(float* vector1, float* vector2) {
 
 int main()
 {
-	float vector1[4] = { 0.0,0.0,0.0,0.0 };
-	float vector2[4] = { 0.0,0.0,0.0,0.0 };
+	float vector1[8] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 , 0.0};
+	float vector2[8] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 , 0.0 };
 	float* resultado = new float;
 	float escalar;
 	std::cout << "Operador de vectores" << std::endl;
@@ -164,29 +164,29 @@ int main()
 		switch (validOperation) {
 		case 0:
 			SumProc(vector1, vector2, resultado);
-			imprimirResultado(resultado, 4, "Suma", vector1, vector2);
+			imprimirResultado(resultado, 8, "Suma", vector1, vector2);
 			break;
 		case 1:
 			RestProc(vector1, vector2, resultado);
-			imprimirResultado(resultado, 4, "Resta", vector1, vector2);
+			imprimirResultado(resultado, 8, "Resta", vector1, vector2);
 			break;
 		case 2:
 			MultiProc(vector1, vector2, resultado);
-			imprimirResultado(resultado, 4, "Multiplicacion", vector1, vector2);
+			imprimirResultado(resultado, 8, "Multiplicacion", vector1, vector2);
 			break;
 		case 3:
 			DivProc(vector1, vector2, resultado);
-			imprimirResultado(resultado, 4, "Division", vector1, vector2);
+			imprimirResultado(resultado, 8, "Division", vector1, vector2);
 			break;
 		case 4:
 			escalar = pedirEscalar();
 			MultiScalarProc(escalar, elegirVector(vector1, vector2), resultado);
 			cout << "Escalar = " << escalar << endl;
-			imprimirResultado(resultado, 4, "Multipliacion por escalar", vector1, vector2);
+			imprimirResultado(resultado, 8, "Multipliacion por escalar", vector1, vector2);
 			break;
 		case 5:
 			SquareProc(elegirVector(vector1, vector2), resultado);
-			imprimirResultado(resultado, 4, "Elevar al cuadrado", vector1, vector2);
+			imprimirResultado(resultado, 8, "Elevar al cuadrado", vector1, vector2);
 			break;
 		case 6:
 			cambiarValores(vector1, vector2);
