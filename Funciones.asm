@@ -11,13 +11,13 @@ SumProc proc
     ; Se mueve el vector al que apunta RCX hacia el registro xmm0
     ; Se mueve el vector al que apunta RDX hacia el registro xmm1
 
-    vmovups xmm0, [RCX]
-    vmovups xmm1, [RDX]
+    vmovups ymm0, [RCX]
+    vmovups ymm1, [RDX]
     ; Se realiza la Suma y queda guardada en xmm2
-    vaddps xmm2, xmm0,xmm1
+    vaddps ymm2, ymm0,ymm1
 
     ; Movemos el vector guardado en xmm2 al puntero guardado en r8
-	vmovups [r8], xmm2
+	vmovups [r8], ymm2
 
     ret
     
@@ -33,13 +33,13 @@ RestProc proc
     ; Se mueve el vector al que apunta RCX hacia el registro xmm0
     ; Se mueve el vector al que apunta RDX hacia el registro xmm1
 
-    vmovups xmm0, [RCX]
-    vmovups xmm1, [RDX]
+    vmovups ymm0, [RCX]
+    vmovups ymm1, [RDX]
     ; Se realiza la Resta y queda guardada en xmm2
-    vsubps xmm2, xmm0,xmm1
+    vsubps ymm2, ymm0,ymm1
 
     ; Movemos el vector guardado en xmm2 al puntero guardado en r8
-	vmovups [r8], xmm2
+	vmovups [r8], ymm2
 
     ret
 RestProc endp
@@ -53,13 +53,13 @@ DivProc proc
     ; Se mueve el vector al que apunta RCX hacia el registro xmm0
     ; Se mueve el vector al que apunta RDX hacia el registro xmm1
 
-    vmovups xmm0, [RCX]
-    vmovups xmm1, [RDX]
+    vmovups ymm0, [RCX]
+    vmovups ymm1, [RDX]
     ; Se realiza la Division y queda guardada en xmm2
-    vdivps xmm2, xmm0,xmm1
+    vdivps ymm2, ymm0,ymm1
 
     ; Movemos el vector guardado en xmm2 al puntero guardado en r8
-	vmovups [r8], xmm2
+	vmovups [r8], ymm2
 
     ret
 DivProc endp
@@ -73,13 +73,13 @@ MultiProc proc
     ; Se mueve el vector al que apunta RCX hacia el registro xmm0
     ; Se mueve el vector al que apunta RDX hacia el registro xmm1
 
-    vmovups xmm0, [RCX]
-    vmovups xmm1, [RDX]
+    vmovups ymm0, [RCX]
+    vmovups ymm1, [RDX]
     ; Se realiza la multiplicacion y queda guardada en xmm2
-    vmulps xmm2, xmm0,xmm1
+    vmulps ymm2, ymm0, ymm1
 
     ; Movemos el vector guardado en xmm2 al puntero guardado en r8
-	vmovups [r8], xmm2
+	vmovups [r8], ymm2
 
     ret
 MultiProc endp
@@ -95,7 +95,7 @@ MultiScalarProc proc
     mov rax, 0
 
     ; Cantidad de elementos
-    mov ebx, 4
+    mov ebx, 8
 
 
     ; Reserva espacio en el puntero
@@ -132,18 +132,15 @@ MultiScalarProc endp
     ; Se mueve el vector al que apunta RCX hacia el registro xmm0
     ; Se mueve el vector al que apunta RCX hacia el registro xmm1
 
-    vmovups xmm0, [RCX]
-    vmovups xmm1, [RCX]; metiendo aqui el rcx
+    vmovups ymm0, [RCX]
+    vmovups ymm1, [RCX]; metiendo aqui el rcx
     ; Se realiza la multiplicacion y queda guardada en xmm2
-    vmulps xmm2, xmm0,xmm1
+    vmulps ymm2, ymm0, ymm1
 
     ; Movemos el vector guardado en xmm2 al puntero guardado en RDX
-	vmovups [RDX], xmm2
+	vmovups [RDX], ymm2
 
     ret
     SquareProc endp
 
 end
-
-
-    
